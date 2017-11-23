@@ -8,24 +8,14 @@ import java.nio.channels.SocketChannel;
 import nioserver.model.DataBase;
 import nioserver.model.DataProcessing;
 import nioserver.startup.NioServer;
-import nioserver.net.ServerThread;
+import nioserver.net.ServerSender;
         
 public class ReadMsg {
     
-        public static void readWriteMsg(SelectionKey key) throws IOException {  
-        ServerThread.stringByte.delete(0, ServerThread.stringByte.length());  
+        public static void readWriteMsg(SelectionKey key, StringBuffer stringByte) throws IOException {  
+ 
         SocketChannel sc = (SocketChannel) key.channel();   
-        ByteBuffer buffer = ByteBuffer.allocate(1024);  
-        buffer.clear();  
-        int len = 0;  
-        StringBuffer stringByte = new StringBuffer();  
-        while ((len = sc.read(buffer)) > 0) {  
-            buffer.flip();  //turn the buffer's status from storing data into ready for reading data
-            stringByte.append(new String(buffer.array(), 0, len));  
-        }  
         
-        if(stringByte.length()>0)
-        {
         String rcvCTX = stringByte.toString();
         String sendCTX = null;
                 
@@ -63,7 +53,7 @@ public class ReadMsg {
                                     sendCTX ="/"+baseIP+")"+"{on}"+"["+"New round: Please guess a letter"+
                                             userUnderline+" <"+wordLength+" letters>"+"]";
                                     System.out.println("server sent:"+ sendCTX);
-                                    sc.write(ByteBuffer.wrap(sendCTX.getBytes()));
+                                    ServerSender.serverSender(key,sendCTX);
                                     break;
                                 }
                                 
@@ -90,7 +80,7 @@ public class ReadMsg {
                                     sendCTX ="/"+baseIP+")"+"{end}"+"[" +"Thanks for playing"+
                                             "!"+" You have "+userRecord+" points!"+"]";
                                     System.out.println("server sent:"+ sendCTX);
-                                    sc.write(ByteBuffer.wrap(sendCTX.getBytes()));
+                                    ServerSender.serverSender(key,sendCTX);
                                     key.cancel();   //Shut down the connection
                                     sc.close();  
                                     sc.socket().close(); 
@@ -120,7 +110,7 @@ public class ReadMsg {
                                     sendCTX ="/"+baseIP+")"+"{end}"+"[" +"Thanks for playing"+
                                             "!"+" You have "+userRecord+" points!"+"]";
                                     System.out.println("server sent:"+ sendCTX);
-                                    sc.write(ByteBuffer.wrap(sendCTX.getBytes()));
+                                    ServerSender.serverSender(key,sendCTX);
                                     key.cancel();   //close
                                     sc.close();  
                                     sc.socket().close(); 
@@ -133,7 +123,7 @@ public class ReadMsg {
                     default:
                         sendCTX = DataBase.dataProcess(rcvCTX);
                         System.out.println("server sent:"+ sendCTX);
-                sc.write(ByteBuffer.wrap(sendCTX.getBytes()));
+                ServerSender.serverSender(key,sendCTX);
                         break;
                 }
         }   
@@ -141,4 +131,4 @@ public class ReadMsg {
    
 
     }  
-}
+

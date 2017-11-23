@@ -6,12 +6,12 @@ import java.nio.channels.*;
 import java.util.*; 
 import java.util.logging.*;
 import nioserver.startup.NioServer;
-import nioserver.controller.ReadMsg;
+import nioserver.net.ServerReceiver;
 import nioserver.controller.GetConnection;
 
 public class ServerThread extends Thread implements Runnable{  
-    public static Selector selector;  
-    public static StringBuffer stringByte = new StringBuffer();  
+      
+    public static Selector selector;
     SelectionKey ssKey;  
 
     public ServerThread() {  
@@ -53,7 +53,7 @@ public class ServerThread extends Thread implements Runnable{
                         } 
                         //If the server channel has data to be read, using function readMsg(key) to deal with it
                         else if (key.isReadable()|key.isWritable()) {  
-                            ReadMsg.readWriteMsg(key);  
+                            ServerReceiver.serverReceive(key);  
                         }  
                         else 
                             break;  

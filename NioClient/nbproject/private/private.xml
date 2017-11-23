@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/harry/Desktop/KTH%20Course/Period%202/ID1212/Task%202%20-%20Annotated/NioClient/src/nioclient/startup/NioClient.java</file>
+            <file>file:/Users/harry/Desktop/KTH%20Course/Period%202/ID1212/Task%202%20-%20Annotated/NioClient/src/nioclient/net/ThreadReceiver.java</file>
             <file>file:/Users/harry/Desktop/KTH%20Course/Period%202/ID1212/Task%202%20-%20Annotated/NioClient/src/nioclient/net/ThreadSender.java</file>
             <file>file:/Users/harry/Desktop/KTH%20Course/Period%202/ID1212/Task%202%20-%20Annotated/NioClient/src/nioclient/view/cmdView.java</file>
-            <file>file:/Users/harry/Desktop/KTH%20Course/Period%202/ID1212/Task%202%20-%20Annotated/NioClient/src/nioclient/net/ThreadReceiver.java</file>
             <file>file:/Users/harry/Desktop/KTH%20Course/Period%202/ID1212/Task%202%20-%20Annotated/NioClient/src/nioclient/net/ThreadNet.java</file>
-            <file>file:/Users/harry/Desktop/KTH%20Course/Period%202/ID1212/Task%202%20-%20Annotated/NioClient/src/nioclient/startup/NioClient.java</file>
+            <file>file:/Users/harry/Desktop/KTH%20Course/Period%202/ID1212/Task%202%20-%20Annotated/NioClient/src/nioclient/controller/ThreadTyper.java</file>
         </group>
     </open-files>
 </project-private>
