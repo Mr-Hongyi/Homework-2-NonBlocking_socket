@@ -1,8 +1,8 @@
 package nioclient.startup;
 
 import java.util.*;
-import nioclient.controller.ThreadWriter;
-import nioclient.net.ThreadReader;
+import nioclient.controller.ThreadTyper;
+import nioclient.net.ThreadNet;
 
 public class NioClient {  
     
@@ -14,8 +14,8 @@ public class NioClient {
         System.out.println("Welcome to HangMan Game! Please enter the server address:");
         Scanner scan = new Scanner(System.in);
         SERVER_ADDRESS = scan.next();
-        ThreadReader read = new ThreadReader();
-        ThreadWriter write = new ThreadWriter();
+        ThreadNet read = new ThreadNet();
+        ThreadTyper write = new ThreadTyper();
         new Thread(read).start();
         new Thread(write).start();
     }  

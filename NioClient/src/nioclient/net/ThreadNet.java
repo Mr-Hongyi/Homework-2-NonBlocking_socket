@@ -6,17 +6,18 @@ import java.nio.ByteBuffer;
 import java.nio.channels.*; 
 import java.util.logging.*; 
 import nioclient.startup.NioClient;
-import nioclient.view.cmdView;
+import nioclient.net.ThreadReceiver;
 
-public class ThreadReader extends Thread implements Runnable{
+public class ThreadNet extends Thread implements Runnable{
     
     Selector selector;   
 
     public static SocketChannel SOCKET_CHANNEL;
     
-    public ThreadReader() {    
+    public ThreadNet() {    
 
     }  
+    
     public void init() {  
         try { 
             //Building connection with the server running on port 9999 
@@ -35,7 +36,8 @@ public class ThreadReader extends Thread implements Runnable{
     public void run() {  
         
         init();  
-        cmdView.userView();  
+        ThreadReceiver.ctxRcv();  
+        
     }  
     
 }
